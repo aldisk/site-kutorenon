@@ -11,7 +11,7 @@ class admin extends Model
 {
     use HasFactory;
     public function hasEntry($username) {
-        return DB::table('users') ->where('username', $username) ->exists();
+        return DB::table('admins') ->where('username', $username) ->exists();
     }
 
     public function authenticate($username, $password) {
@@ -24,6 +24,6 @@ class admin extends Model
     }
 
     public function getEntry($username) {
-        return DB::table('users') ->where('username', $username) ->first();
+        return DB::table('admins') ->where('username', $username) ->first();
     }
 }
