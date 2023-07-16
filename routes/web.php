@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\beritaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\NoAuthCheck;
 use App\Http\Middleware\AuthCheck;
@@ -30,3 +31,10 @@ Route::get('/admin/login', function () {
 
 Route::post('/admin/login/auth', [adminController::class, 'login']
 ) -> middleware(NoAuthCheck::class) -> name('DashLogin');
+
+Route::get('/admin/berita/insert', function () {
+    return view('dashboard', ['mode' => 'insert']);
+}) -> middleware(AuthCheck::class);
+
+Route::post('/admin/berita/insert/auth', [beritaController::class, 'insert']
+) -> middleware(AuthCheck::class) -> name('BeritaInsert');
