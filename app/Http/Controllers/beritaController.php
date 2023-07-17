@@ -51,6 +51,8 @@ class beritaController extends Controller
         $data = $request->all();
         $beritas = new berita;
 
+        if(!$beritas->IDExist($data['id'])) {return back();}
+
         $beritas->updateBerita(
             $data['id'],
             $data['judul'],
