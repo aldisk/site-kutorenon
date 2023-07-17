@@ -25,6 +25,8 @@ class berita extends Model
         $searcQuery = $searcQuery->slice($start, $epp);
         $maxPage = ceil($count / $epp);
 
+        if($maxPage == 0) {$maxPage = 1;}
+
         return ["searchResult" => $searcQuery, "maxPage" => $maxPage];
     }
 

@@ -35,7 +35,7 @@ class beritaController extends Controller
         $berita = new berita;
         if($berita->IDExist($id)) {
             $beritaData = $berita->getBeritasByID($id);
-            return view('dashboard', ['berita' => $beritaData, 'mode' => 'edit']);
+            return view('dashboard', ['berita' => $beritaData, 'mode' => 'edit', 'tab' => 'berita']);
         } else {
             return redirect('/404');
         }
@@ -95,7 +95,7 @@ class beritaController extends Controller
         $result = $berita->getPagedBeritas($searchToken, $page);
         $beritas = $result['searchResult'];
 
-        return view('dashboard', ["beritas" => $beritas, "searchToken" => $searchToken, "page" => $page, "maxPage" => $result['maxPage'], "mode" => 'manage']);
+        return view('dashboard', ["beritas" => $beritas, "searchToken" => $searchToken, "page" => $page, "maxPage" => $result['maxPage'], "mode" => 'manage',  'tab' => 'berita']);
     }
 
     private function wrapText($string){

@@ -4,6 +4,7 @@
     </head>
     <body>
         <h1>Manage Berita</h1>
+        <a href="/admin/berita/insert">Berita Baru +</a>
         <form action="{{ route('BeritaManage') }}">
             <input type="text" name="searchToken" placeholder="Search">
             <input type="number" name="page" placeholder="Page" value="{!! $page !!}" max="{!! $maxPage !!}" min="1">

@@ -1,3 +1,4 @@
+<h1>Tulis Berita</h1>
 <form action="{{ route('BeritaInsert') }}" method="post" enctype="multipart/form-data">
     @csrf
     Judul Berita : <input type="text" name="judul"> <br>
