@@ -11,11 +11,29 @@ class berita extends Model
     use HasFactory;
 
     public function getBeritasByID($id) {
-        return DB::table('beritas')->where('id', $id)->get(); 
+        return DB::table('beritas')->where('id', $id)->first(); 
+    }
+
+    public function getPagedBeritas($searchToken, $page){
+        $epp = 6;
+
+        $start = $epp * ($page-1);
+
+        $count = DB::table('beritas') ->where('judul', 'like' , '%'.$searchToken.'%') -> count();
+        $searcQuery = DB::table('beritas') ->where('judul', 'like' , '%'.$searchToken.'%')-> orderBy('id', 'desc') ->get();
+
+        $searcQuery = $searcQuery->slice($start, $epp);
+        $maxPage = ceil($count / $epp);
+
+        return ["searchResult" => $searcQuery, "maxPage" => $maxPage];
     }
 
     public function getBeritasByPenulis($penulis) {
         return DB::table('beritas')->where('penulis', $penulis)->get(); 
+    }
+
+    public function IDExist($id) {
+        return DB::table('beritas')->where('id', $id)->exists();
     }
 
     public function getAll() {

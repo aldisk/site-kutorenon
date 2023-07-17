@@ -32,4 +32,9 @@ class adminController extends Controller
         }
     }
 
+    public function logout(Request $request) {
+        $request->session()->forget('username');
+        return redirect('/admin/login');
+    }
+
 }
