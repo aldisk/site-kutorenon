@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\beritaController;
+use App\Http\Controllers\dokumenController;
 use App\Http\Controllers\potensiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\NoAuthCheck;
@@ -77,4 +78,24 @@ Route::post('/admin/potensi/edit/auth', [potensiController::class, 'editPotensi'
 ) -> middleware(AuthCheck::class) -> name ('PotensiUpdate');
 
 Route::get('/admin/potensi/delete/{id}', [potensiController::class, 'deletePotensi']
+) -> middleware(AuthCheck::class);
+
+//Dokumen
+Route::get('/admin/dokumen', [dokumenController::class, 'pagedManageDokumen']
+) -> middleware(AuthCheck::class) -> name('DokumenManage');
+
+Route::get('/admin/dokumen/insert', function () {
+    return view('dashboard', ['mode' => 'insert', 'tab' => 'dokumen']);
+}) -> middleware(AuthCheck::class);
+
+Route::post('/admin/dokumen/insert/auth', [dokumenController::class, 'insert']
+) -> middleware(AuthCheck::class) -> name('DokumenInsert');
+
+Route::get('/admin/dokumen/edit/{id}', [dokumenController::class, 'editPage']
+) -> middleware(AuthCheck::class);
+
+Route::post('/admin/dokumen/edit/auth', [dokumenController::class, 'editDokumen']
+) -> middleware(AuthCheck::class) -> name ('DokumenUpdate');
+
+Route::get('/admin/dokumen/delete/{id}', [dokumenController::class, 'deleteDokumen']
 ) -> middleware(AuthCheck::class);
