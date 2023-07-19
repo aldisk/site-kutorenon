@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\anggaranController;
 use App\Http\Controllers\beritaController;
 use App\Http\Controllers\dokumenController;
 use App\Http\Controllers\potensiController;
@@ -98,4 +99,24 @@ Route::post('/admin/dokumen/edit/auth', [dokumenController::class, 'editDokumen'
 ) -> middleware(AuthCheck::class) -> name ('DokumenUpdate');
 
 Route::get('/admin/dokumen/delete/{id}', [dokumenController::class, 'deleteDokumen']
+) -> middleware(AuthCheck::class);
+
+//Anggaran
+Route::get('/admin/anggaran', [anggaranController::class, 'pagedManageDokumen']
+) -> middleware(AuthCheck::class) -> name('AnggaranManage');
+
+Route::get('/admin/anggaran/insert', function () {
+    return view('dashboard', ['mode' => 'insert', 'tab' => 'anggaran']);
+}) -> middleware(AuthCheck::class);
+
+Route::post('/admin/anggaran/insert/auth', [anggaranController::class, 'insert']
+) -> middleware(AuthCheck::class) -> name('AnggaranInsert');
+
+Route::get('/admin/anggaran/edit/{id}', [anggaranController::class, 'editPage']
+) -> middleware(AuthCheck::class);
+
+Route::post('/admin/anggaran/edit/auth', [anggaranController::class, 'editDokumen']
+) -> middleware(AuthCheck::class) -> name ('AnggaranUpdate');
+
+Route::get('/admin/anggaran/delete/{id}', [anggaranController::class, 'deleteDokumen']
 ) -> middleware(AuthCheck::class);

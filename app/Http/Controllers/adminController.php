@@ -23,7 +23,7 @@ class adminController extends Controller
             $userData = $admin->getEntry($data['username']);
             if($admin->authenticate($data['username'], $data['password'])){
                 $request->session()->put('username', $userData->username);
-                return redirect('/')->with('result', 'success login');
+                return redirect('/admin')->with('result', 'success login');
             } else {
                 return back()->with('result', 'Wrong password');
             }
