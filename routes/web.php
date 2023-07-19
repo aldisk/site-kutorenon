@@ -3,6 +3,7 @@
 use App\Http\Controllers\anggaranController;
 use App\Http\Controllers\beritaController;
 use App\Http\Controllers\dokumenController;
+use App\Http\Controllers\lembagaController;
 use App\Http\Controllers\potensiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\NoAuthCheck;
@@ -119,4 +120,24 @@ Route::post('/admin/anggaran/edit/auth', [anggaranController::class, 'editDokume
 ) -> middleware(AuthCheck::class) -> name ('AnggaranUpdate');
 
 Route::get('/admin/anggaran/delete/{id}', [anggaranController::class, 'deleteDokumen']
+) -> middleware(AuthCheck::class);
+
+//Lembaga
+Route::get('/admin/lembaga', [lembagaController::class, 'pagedManageLembaga']
+) -> middleware(AuthCheck::class) -> name('LembagaManage');
+
+Route::get('/admin/lembaga/insert', function () {
+    return view('dashboard', ['mode' => 'insert', 'tab' => 'lembaga']);
+}) -> middleware(AuthCheck::class);
+
+Route::post('/admin/lembaga/insert/auth', [lembagaController::class, 'insert']
+) -> middleware(AuthCheck::class) -> name('LembagaInsert');
+
+Route::get('/admin/lembaga/edit/{id}', [lembagaController::class, 'editPage']
+) -> middleware(AuthCheck::class);
+
+Route::post('/admin/lembaga/edit/auth', [lembagaController::class, 'editLembaga']
+) -> middleware(AuthCheck::class) -> name ('LembagaUpdate');
+
+Route::get('/admin/lembaga/delete/{id}', [lembagaController::class, 'deleteLembaga']
 ) -> middleware(AuthCheck::class);

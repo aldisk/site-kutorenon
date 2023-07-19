@@ -8,6 +8,7 @@
         <a href="/admin/potensi">potensi desa</a>
         <a href="/admin/dokumen">dokumen</a>
         <a href="/admin/anggaran">anggaran</a>
+        <a href="/admin/lembaga">lembaga</a>
         @if(isset($mode) && isset ($tab))
             @if($tab == 'berita')
                 @if($mode == 'insert')
@@ -40,6 +41,14 @@
                     @include('manage-anggaran')
                 @elseif($mode == 'edit')
                     @include('edit-anggaran')
+                @endif
+            @elseif($tab =='lembaga')
+                @if($mode == 'insert')
+                    @include('insert-lembaga')
+                @elseif($mode == 'manage')
+                    @include('manage-lembaga')
+                @elseif($mode == 'edit')
+                    @include('edit-lembaga')
                 @endif
             @endif
         @endif
