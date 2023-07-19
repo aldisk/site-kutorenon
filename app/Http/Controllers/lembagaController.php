@@ -78,7 +78,7 @@ class lembagaController extends Controller
         if(!is_string($id)) {return redirect('/404');}
         if($lembaga->IDExist($id)) {
             $lembaga->deleteLembaga($id);
-            Storage::delete('public/lembaga/'.$id.'.pdf');
+            Storage::delete('public/lembaga/'.$id.'.jpg');
             return redirect('/admin/lembaga');
         } else {
             return redirect('/404');
