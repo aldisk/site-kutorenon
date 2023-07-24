@@ -5,6 +5,7 @@ use App\Http\Controllers\beritaController;
 use App\Http\Controllers\dokumenController;
 use App\Http\Controllers\lembagaController;
 use App\Http\Controllers\potensiController;
+use App\Http\Controllers\publicController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\NoAuthCheck;
 use App\Http\Middleware\AuthCheck;
@@ -21,9 +22,9 @@ use App\Http\Controllers\adminController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [publicController::class, 'homepage']);
+
+Route::get('/berita/{id}', [publicController::class, 'viewBerita']);
 
 Route::get('/admin', function () {
     return view('dashboard');
