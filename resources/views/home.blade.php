@@ -5,7 +5,11 @@
     <body>
         <h1>Website Desa Kutorenon</h1>
     </body>
+    <a href="/berita/search">Berita</a>
+    <a href="/dokumen">Dokumen</a>
+    <br> <br>
+    Berita Terbaru <br>
     @foreach($items as $item)
-        <a href="/berita/{!! $item->id !!}">{{ $item->judul }}</a> <br>
+        <a href="/berita/view/{!! $item->id !!}">{{ $item->judul }}</a> <br>
     @endforeach
 </html>

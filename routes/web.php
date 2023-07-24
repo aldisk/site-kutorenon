@@ -24,9 +24,11 @@ use App\Http\Controllers\adminController;
 
 Route::get('/', [publicController::class, 'homepage']);
 
-Route::get('/berita/{id}', [publicController::class, 'viewBerita']);
+Route::get('/berita/view/{id}', [publicController::class, 'viewBerita']);
 
-Route::get('/dokumen', [publicController::class, 'viewDokumen']);
+Route::get('/berita/search', [publicController::class, 'beritaPage']) -> name('searchBerita');
+
+Route::get('/dokumen', [publicController::class, 'dokumenPage']);
 
 Route::get('/admin', function () {
     return view('dashboard');
