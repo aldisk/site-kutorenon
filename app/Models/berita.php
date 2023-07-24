@@ -42,20 +42,22 @@ class berita extends Model
         return DB::table('beritas')->get();
     }
 
-    public function insertBerita($judul, $isi, $penulis) {
+    public function insertBerita($judul, $isi, $penulis, $slug) {
         return DB::table('beritas')->insertGetId([
             'judul' => $judul,
             'isi' => $isi,
             'penulis' => $penulis,
+            'slug' => $slug,
             'created_at' => now(),
             'updated_at' => now()
         ]);
     }
 
-    public function updateBerita($id, $judul, $isi) {
+    public function updateBerita($id, $judul, $isi, $slug) {
         DB::table('beritas')->where('id', $id)->update([
             'judul' => $judul,
             'isi' => $isi,
+            'slug' => $slug,
             'updated_at' => now()
         ]);
     }

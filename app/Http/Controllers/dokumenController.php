@@ -21,7 +21,7 @@ class dokumenController extends Controller
             $dokumen = new dokumen;
             $data = $request->all();
 
-            $id = $dokumen->insertDokumen($data['nama'], Str::slug($data['nama'], '-'));
+            $id = $dokumen->insertDokumen($data['nama']);
 
             $request->file('attachment')->storeAs('public/dokumen/'.$id.'.pdf');
 
@@ -74,8 +74,7 @@ class dokumenController extends Controller
 
         $dokumen->updateDokumen(
             $data['id'],
-            $data['nama'],
-            Str::slug($data['nama'], '-')
+            $data['nama']
         );
 
         if($request->has('attachment')) {

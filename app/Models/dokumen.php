@@ -10,10 +10,9 @@ class dokumen extends Model
 {
     use HasFactory;
 
-    public function insertDokumen($nama, $slug) {
+    public function insertDokumen($nama) {
         return DB::table('dokumens')->insertGetId([
             'nama' => $nama,
-            'slug' => $slug,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -43,10 +42,9 @@ class dokumen extends Model
         return ["searchResult" => $searcQuery, "maxPage" => $maxPage];
     }
 
-    public function updateDokumen($id, $nama, $slug) {
+    public function updateDokumen($id, $nama) {
         DB::table('dokumens')->where('id', $id)->update([
-            'nama' => $nama,
-            'slug' => $slug
+            'nama' => $nama
         ]);
     }
 

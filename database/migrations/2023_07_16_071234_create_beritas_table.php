@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->string('isi');
+            $table->string('slug');
             $table->string('penulis')->nullable();
             $table->foreign('penulis')->references('username')->on('admins')->nullOnDelete();
             $table->timestamps();

@@ -31,26 +31,32 @@ class potensi extends Model
     }
 
     public function IDExist($id) {
-        return DB::table('potensis')->where('id', $id)->exists();
+        return DB::table('potensis')->where('id', $id) ->exists();
+    }
+
+    public function nameExist($slug) {
+        return DB::table('potensis')->where('slug', $slug) ->exists();
     }
 
     public function getAll() {
         return DB::table('potensis')->get();
     }
 
-    public function insertPotensi($nama, $isi) {
+    public function insertPotensi($nama, $isi, $slug) {
         return DB::table('potensis')->insertGetId([
             'nama' => $nama,
             'isi' => $isi,
+            'slug' => $slug,
             'created_at' => now(),
             'updated_at' => now()
         ]);
     }
 
-    public function updatePotensi($id, $nama, $isi) {
+    public function updatePotensi($id, $nama, $isi, $slug) {
         DB::table('potensis')->where('id', $id)->update([
             'nama' => $nama,
             'isi' => $isi,
+            'slug' => $slug,
             'updated_at' => now()
         ]);
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\berita;
+use Illuminate\Support\Str;
 
 class beritaController extends Controller
 {
@@ -21,7 +22,8 @@ class beritaController extends Controller
             $id = $beritas->insertBerita(
                 $data['judul'],
                 $this->wrapText($data['isi']),
-                $request->session()->get('username')
+                $request->session()->get('username'),
+                Str::slug($data['judul'], '-')
             );
 
             $request->file('fotoBerita')->storeAs('public/foto-berita/'.$id.'.jpg');
@@ -56,7 +58,8 @@ class beritaController extends Controller
         $beritas->updateBerita(
             $data['id'],
             $data['judul'],
-            $this->wrapText($data['isi'])
+            $this->wrapText($data['isi']),
+            Str::slug($data['judul'], '-')
         );
 
         if($request->has('fotoBerita')) {

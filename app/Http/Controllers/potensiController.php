@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\potensi;
+use Illuminate\Support\Str;
 
 class potensiController extends Controller
 {
@@ -18,9 +19,12 @@ class potensiController extends Controller
             $data = $request->all();
             $potensi = new potensi;
 
+            if($potensi->nameExist(Str::slug($data['nama'], '-'))) {return back();}
+
             $id = $potensi->insertPotensi(
                 $data['nama'],
-                $this->wrapText($data['isi'])
+                $this->wrapText($data['isi']),
+                Str::slug($data['nama'], '-')
             );
 
             $request->file('fotoPotensi')->storeAs('public/foto-potensi/'.$id.'.jpg');
@@ -50,12 +54,13 @@ class potensiController extends Controller
         $data = $request->all();
         $potensi = new potensi;
 
-        if(!$potensi->IDExist($data['id'])) {return back();}
+        if(!($potensi->IDExist($data['id']) && !$potensi->nameExist(Str::slug($data['nama'], '-')))) {return back();}
 
         $potensi->updatePotensi(
             $data['id'],
             $data['nama'],
-            $this->wrapText($data['isi'])
+            $this->wrapText($data['isi']),
+            Str::slug($data['nama'], '-')
         );
 
         if($request->has('fotoPotensi')) {

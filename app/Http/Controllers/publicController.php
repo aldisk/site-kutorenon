@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\berita;
+use App\Models\dokumen;
 use Illuminate\Http\Request;
 
 class publicController extends Controller
@@ -19,5 +20,12 @@ class publicController extends Controller
         $item = $berita->getBeritasByID($id);
 
         return view('view-berita', ['item' => $item]);
+    }
+
+    public function viewDokumen(Request $request) {
+        $dokumen= new dokumen;
+        $items = $dokumen->getAll();
+
+        return view('view-dokumen', ['items' => $items, 'tabs' => 'Dokumen']);
     }
 }

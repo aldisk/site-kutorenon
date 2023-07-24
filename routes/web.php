@@ -26,6 +26,8 @@ Route::get('/', [publicController::class, 'homepage']);
 
 Route::get('/berita/{id}', [publicController::class, 'viewBerita']);
 
+Route::get('/dokumen', [publicController::class, 'viewDokumen']);
+
 Route::get('/admin', function () {
     return view('dashboard');
 }) -> middleware(AuthCheck::class);
