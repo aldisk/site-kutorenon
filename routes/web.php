@@ -24,9 +24,19 @@ use App\Http\Controllers\adminController;
 
 Route::get('/', [publicController::class, 'homepage']);
 
+Route::get('/berita/search', [publicController::class, 'beritaPage']) -> name('searchBerita');
+
 Route::get('/berita/view/{id}', [publicController::class, 'viewBerita']);
 
-Route::get('/berita/search', [publicController::class, 'beritaPage']) -> name('searchBerita');
+Route::get('/potensi', [publicController::class, 'potensiPage']);
+
+Route::get('/potensi/view/{slug}', [publicController::class, 'viewPotensi']);
+
+Route::get('/lembaga', [publicController::class, 'lembagaPage']);
+
+Route::get('/lembaga/view/{id}', [publicController::class, 'viewLembaga']);
+
+Route::get('/anggaran', [publicController::class, 'anggaranPage']);
 
 Route::get('/dokumen', [publicController::class, 'dokumenPage']);
 

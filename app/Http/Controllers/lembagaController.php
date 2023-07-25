@@ -27,7 +27,7 @@ class lembagaController extends Controller
             $lembaga->insertLembaga(
                 $data['nama'],
                 Str::slug($data['nama'], '-'),
-                $data['isi']
+                $this->wrapText($data['isi'])
             );
 
             $request->file('attachment')->storeAs('public/lembaga/'.Str::slug($data['nama'], '-').'.jpg');

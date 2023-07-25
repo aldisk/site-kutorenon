@@ -14,6 +14,10 @@ class potensi extends Model
         return DB::table('potensis')->where('id', $id)->first(); 
     }
 
+    public function getPotensiBySlug($slug) {
+        return DB::table('potensis')->where('slug', $slug)->first();
+    }
+
     public function getPagedPotensis($searchToken, $page){
         $epp = 6;
 
