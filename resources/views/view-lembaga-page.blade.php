@@ -1,5 +1,6 @@
 <html>
     <head>
+        @include('plugin/bootstrap-open')
         <title>Lembaga Desa | Website Resmi Kutorenon</title>
     </head>
     <body>
@@ -8,5 +9,6 @@
         @foreach($items as $item)
             <a href="/lembaga/view/{!! $item->id !!}">{{ $item->nama }}</a> <br>
         @endforeach
+        @include('plugin/bootstrap-close')
     </body>
 </html>

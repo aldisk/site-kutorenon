@@ -1,5 +1,6 @@
 <html>
     <head>
+        @include('plugin/bootstrap-open')
         <title>{{ $item->judul }} | Website Resmi Kutorenon</title>
     </head>
     <body>
@@ -11,5 +12,6 @@
         @foreach(explode(';', $item->isi) as $iter)
             {{ $iter }} <br>
         @endforeach
+        @include('plugin/bootstrap-close')
     </body>
 </html>

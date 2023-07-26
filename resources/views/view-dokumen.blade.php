@@ -1,5 +1,6 @@
 <html>
     <head>
+        @include('plugin/bootstrap-open')
         <title>{{ $tabs }} | Website Resmi Kutorenon</title>
     </head>
     <body>
@@ -8,5 +9,6 @@
         @foreach($items as $item)
             <a href="{!! asset('/storage/'.strtolower($tabs).'/'.$item->id.'.pdf') !!}">{{ $item->nama }}</a>
         @endforeach
+        @include('plugin/bootstrap-close')
     </body>
 </html>
