@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\anggaran;
 use App\Models\berita;
 use App\Models\dokumen;
+use App\Models\fasilitas;
 use App\Models\lembaga;
 use App\Models\potensi;
 use Illuminate\Http\Request;
@@ -54,14 +55,28 @@ class publicController extends Controller
         $potensi = new potensi;
         $items = $potensi->getAll();
 
-        return view('view-potensi-page', ['items' => $items]);
+        return view('view-objek-page', ['items' => $items, 'tabs' => 'Potensi']);
     }
 
     public function viewPotensi($slug, Request $request) {
         $potensi = new potensi;
         $item = $potensi->getPotensiBySlug($slug);
 
-        return view('view-potensi', ['item' => $item]);
+        return view('view-objek', ['item' => $item, 'tabs' => 'Potensi']);
+    }
+
+    public function fasilitasPage(Request $request) {
+        $fasilitas = new fasilitas;
+        $items = $fasilitas->getAll();
+
+        return view('view-objek-page', ['items' => $items, 'tabs' => 'Fasilitas']);
+    }
+
+    public function viewFasilitas($slug, Request $request) {
+        $fasilitas = new fasilitas;
+        $item = $fasilitas->getFasilitasBySlug($slug);
+
+        return view('view-objek', ['item' => $item, 'tabs' => 'Fasilitas']);
     }
 
     public function lembagaPage(Request $request) {

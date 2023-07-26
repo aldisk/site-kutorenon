@@ -3,6 +3,7 @@
 use App\Http\Controllers\anggaranController;
 use App\Http\Controllers\beritaController;
 use App\Http\Controllers\dokumenController;
+use App\Http\Controllers\fasilitasController;
 use App\Http\Controllers\lembagaController;
 use App\Http\Controllers\potensiController;
 use App\Http\Controllers\publicController;
@@ -31,6 +32,10 @@ Route::get('/berita/view/{id}', [publicController::class, 'viewBerita']);
 Route::get('/potensi', [publicController::class, 'potensiPage']);
 
 Route::get('/potensi/view/{slug}', [publicController::class, 'viewPotensi']);
+
+Route::get('/fasilitas', [publicController::class, 'fasilitasPage']);
+
+Route::get('/fasilitas/view/{slug}', [publicController::class, 'viewFasilitas']);
 
 Route::get('/lembaga', [publicController::class, 'lembagaPage']);
 
@@ -155,4 +160,24 @@ Route::post('/admin/lembaga/edit/auth', [lembagaController::class, 'editLembaga'
 ) -> middleware(AuthCheck::class) -> name ('LembagaUpdate');
 
 Route::get('/admin/lembaga/delete/{id}', [lembagaController::class, 'deleteLembaga']
+) -> middleware(AuthCheck::class);
+
+//Fasilitas
+Route::get('/admin/fasilitas', [fasilitasController::class, 'pagedManageFasilitas']
+) -> middleware(AuthCheck::class) -> name('FasilitasManage');
+
+Route::get('/admin/fasilitas/insert', function () {
+    return view('dashboard', ['mode' => 'insert', 'tab' => 'fasilitas']);
+}) -> middleware(AuthCheck::class);
+
+Route::post('/admin/fasilitas/insert/auth', [fasilitasController::class, 'insert']
+) -> middleware(AuthCheck::class) -> name('FasilitasInsert');
+
+Route::get('/admin/fasilitas/edit/{id}', [fasilitasController::class, 'editPage']
+) -> middleware(AuthCheck::class);
+
+Route::post('/admin/fasilitas/edit/auth', [fasilitasController::class, 'editFasilitas']
+) -> middleware(AuthCheck::class) -> name ('FasilitasUpdate');
+
+Route::get('/admin/fasilitas/delete/{id}', [fasilitasController::class, 'deleteFasilitas']
 ) -> middleware(AuthCheck::class);

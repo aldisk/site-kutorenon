@@ -5,7 +5,7 @@
     <body>
         @include('navbar')
         <h1>{{ $item->nama }}</h1>
-        <img src="{!! asset('storage/foto-potensi/'.$item->id.'.jpg') !!}" alt="" width="500"> <br>
+        <img src="{!! asset('storage/foto-'.strtolower($tabs).'/'.$item->id.'.jpg') !!}" alt="" width="500"> <br>
         ----------------------------------------------------------------- <br>
         @foreach(explode(';', $item->isi) as $iter)
             {{ $iter }} <br>

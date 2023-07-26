@@ -54,7 +54,11 @@ class potensiController extends Controller
         $data = $request->all();
         $potensi = new potensi;
 
-        if(!($potensi->IDExist($data['id']) && !$potensi->nameExist(Str::slug($data['nama'], '-')))) {return back();}
+        if(!$potensi->IDExist($data['id'])) {return back();}
+
+        $originalData = $potensi->getPotensiByID($data['id']);
+
+        if(!($originalData->slug == Str::slug($data['nama'], '-')) && $potensi->nameExist(Str::slug($data['nama'], '-'))) {return back();}
 
         $potensi->updatePotensi(
             $data['id'],

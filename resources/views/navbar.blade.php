@@ -4,4 +4,5 @@
         <a href="/dokumen">Dokumen</a>
         <a href="/potensi">Potensi</a>
         <a href="/anggaran">Anggaran</a>
+        <a href="/fasilitas">Fasilitas</a>
         <br> <br>
