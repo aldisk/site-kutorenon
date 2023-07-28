@@ -2,11 +2,7 @@
     <head>
         @include('plugin/bootstrap-open')
 
-        <style>
-            .hoverable:hover {
-                text-decoration: underline;
-            }
-        </style>
+        @include('/plugin/hoverable')
 
         <title>Berita | Situs Resmi Desa Kutorenon</title>
     </head>

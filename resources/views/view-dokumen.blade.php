@@ -1,11 +1,12 @@
 <html>
     <head>
         @include('plugin/bootstrap-open')
+        @include('/plugin/hoverable')
         <title>{{ $tabs }} | Website Resmi Kutorenon</title>
     </head>
     <body>
         @include('navbar')
-        <h1 class="py-4 text-center">Dokumen</h1>
+        <h1 class="py-4 text-center">{{ $tabs }}</h1>
 
         <div class="row row-cols-1 row-cols-md-3 p-5 g-4">
             @foreach($items as $item)

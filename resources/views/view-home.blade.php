@@ -3,11 +3,7 @@
 
         @include('plugin/bootstrap-open')
 
-        <style>
-            .hoverable:hover {
-                text-decoration: underline;
-            }
-        </style>
+        @include('/plugin/hoverable')
 
         <title>Home | Website Resmi Desa Kutorenon</title>
     </head>
