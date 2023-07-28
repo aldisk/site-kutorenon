@@ -14,9 +14,7 @@ class berita extends Model
         return DB::table('beritas')->where('id', $id)->first(); 
     }
 
-    public function getPagedBeritas($searchToken, $page){
-        $epp = 6;
-
+    public function getPagedBeritas($searchToken, $page, $epp){
         $start = $epp * ($page-1);
 
         $count = DB::table('beritas') ->where('judul', 'like' , '%'.$searchToken.'%') -> count();

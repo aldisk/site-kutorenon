@@ -14,7 +14,7 @@ class publicController extends Controller
 {
     public function homepage(Request $request) {
         $berita = new berita;
-        $items = $berita->getPagedBeritas('', 1);
+        $items = $berita->getPagedBeritas('', 1, 3);
 
         return view('view-home', ['items' => $items['searchResult']]);
     }
@@ -38,7 +38,7 @@ class publicController extends Controller
         }
 
         $berita = new berita;
-        $result = $berita->getPagedBeritas($searchToken, $page);
+        $result = $berita->getPagedBeritas($searchToken, $page, 6);
         $items = $result['searchResult'];
 
         return view('view-berita-page', ["items" => $items, "searchToken" => $searchToken, "page" => $page, "maxPage" => $result['maxPage']]);

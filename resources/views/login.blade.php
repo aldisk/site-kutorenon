@@ -1,6 +1,7 @@
 <html>
     <head>
         @include('plugin/bootstrap-open')
+        <title>Dashboard</title>
         <style>
                 .wrapper {
         margin-top: 80px;
@@ -50,7 +51,6 @@
         border-top-right-radius: 0;
         }
         </style>
-        <title>Dashboard</title>
     </head>
     <body style="background-color: lavender">
 

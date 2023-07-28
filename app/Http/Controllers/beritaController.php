@@ -97,7 +97,7 @@ class beritaController extends Controller
         }
 
         $berita = new berita;
-        $result = $berita->getPagedBeritas($searchToken, $page);
+        $result = $berita->getPagedBeritas($searchToken, $page, 6);
         $beritas = $result['searchResult'];
 
         return view('dashboard', ["beritas" => $beritas, "searchToken" => $searchToken, "page" => $page, "maxPage" => $result['maxPage'], "mode" => 'manage',  'tab' => 'berita']);
