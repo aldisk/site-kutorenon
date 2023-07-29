@@ -5,12 +5,18 @@
     </head>
     <body>
         @include('navbar')
-        <h1>{{ $item->nama }}</h1>
-        <img src="{!! asset('storage/foto-'.strtolower($tabs).'/'.$item->id.'.jpg') !!}" alt="" width="500"> <br>
-        ----------------------------------------------------------------- <br>
-        @foreach(explode(';', $item->isi) as $iter)
-            {{ $iter }} <br>
-        @endforeach
+        <div class="container">
+            <h1 class="px-3 py-4 mt-4 fs-2 text-center border-bottom">{{ $item->nama }}</h1>
+            <div class="px-3 pt-4">
+            <img src="{!! asset('storage/foto-'.strtolower($tabs).'/'.$item->id.'.jpg') !!}" class="d-block mx-auto img-thumbnail" alt="{!! $item->nama !!}">
+            </div>
+            <div class="text-break mt-4">
+            @foreach(explode(';', $item->isi) as $iter)
+                <h6 class="px-4 py-1 fs-6">{{ $iter }}</h6>
+            @endforeach
+            </div>
+        </div>
+        @include('footer')
         @include('plugin/bootstrap-close')
     </body>
 </html>

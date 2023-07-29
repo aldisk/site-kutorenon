@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('id');
             $table->primary('id');
             $table->string('nama');
-            $table->string('isi');
+            $table->longText('isi');
         });
     }
 

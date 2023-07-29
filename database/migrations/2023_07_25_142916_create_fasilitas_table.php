@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('slug') -> unique();
-            $table->string('isi');
+            $table->longText('isi');
             $table->timestamps();
         });
     }

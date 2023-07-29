@@ -7,7 +7,9 @@
         <title>Berita | Situs Resmi Desa Kutorenon</title>
     </head>
     <body>
-        @include('navbar')
+        @include('navbar')        
+        <div class="container">
+
         <h1 class="py-4 text-center">Berita Desa</h1>
         <form action="{{ route('searchBerita') }}" class=" d-flex flex-wrap justify-content-center align-items-center">
             <div class="mt-3 px-4">
@@ -16,9 +18,9 @@
             <div><button type="submit" class="btn btn-dark mt-3 px-4">Cari</button></div>
         </form>
         
-        <div class="row row-cols-1 row-cols-md-3 p-5 g-4">
+        <div class="row row-cols-1 row-cols-md-3 py-5 px-1 g-4">
             @foreach($items as $item)
-            <div class="col px-5">
+            <div class="col">
                 <div class="card h-100">
                 <img src="{!! asset('/storage/foto-berita/'.$item->id.'.jpg') !!}" style="height: 12rem; object-fit: cover" class="card-img-top" alt="{!! $item->judul !!}">
                 <div class="card-body">
@@ -38,9 +40,8 @@
             </div>
             @endforeach
         </div>
-        
-        <div class="container">
-        <div class="d-flex flex-wrap justify-content-between align-items-center">
+
+        <div class="d-flex justify-content-between align-items-center">
             <form action="{!! route('searchBerita') !!}">
                 <input type="hidden" name="searchToken" value="{!! $searchToken !!}">
                 <input type="hidden" name="page" value="{!! $page - 1 !!}">
@@ -51,7 +52,9 @@
                 @endif
             </form>
 
+            <form>
             <button class="btn btn-outline-dark" disabled><strong>{{ $page.' / '.$maxPage }}</strong></button>
+            </form>
 
             <form action="{!! route('searchBerita') !!}">
                 <input type="hidden" name="searchToken" value="{!! $searchToken !!}">
