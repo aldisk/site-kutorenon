@@ -15,9 +15,9 @@
             Tentang Desa
           </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Profil Desa</a>
+          <a class="dropdown-item" href="/profil">Profil Desa</a>
           <a class="dropdown-item" href="/lembaga">Lembaga</a>
-          <a class="dropdown-item" href="#">Tugas</a>
+          <a class="dropdown-item" href="/tugas">Tugas</a>
           <a class="dropdown-item" href="#">Pejabat Desa</a>
           <a class="dropdown-item" href="/anggaran">Anggaran</a>
         </div>
@@ -33,6 +33,9 @@
       </li>
       <li class="nav-item px-1">
         <a class="nav-link" href="/fasilitas">Fasilitas Umum</a>
+      </li>
+      <li class="nav-item px-1">
+        <a class="nav-link" href="/layanan">Layanan Publik</a>
       </li>
     </ul>
   </div>

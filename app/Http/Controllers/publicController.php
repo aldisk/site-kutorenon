@@ -6,6 +6,7 @@ use App\Models\anggaran;
 use App\Models\berita;
 use App\Models\dokumen;
 use App\Models\fasilitas;
+use App\Models\layanan;
 use App\Models\lembaga;
 use App\Models\potensi;
 use Illuminate\Http\Request;
@@ -105,5 +106,26 @@ class publicController extends Controller
         $items = $anggaran->getAll();
 
         return view('view-dokumen', ['items' => $items, 'tabs' => 'Anggaran']);
+    }
+
+    public function layananPage(Request $request) {
+        $layanan = new layanan;
+        $items = $layanan->getAll();
+
+        return view('view-layanan', ['items' => $items]);
+    }
+
+    public function layananRedirect($id, Request $request) {
+        if(is_numeric($id)) {
+            $layanan = new layanan;
+
+            if(!$layanan->IDExist($id)) {return back();}
+
+            $item = $layanan->getLayananByID($id);
+    
+            return redirect()->away($item->link);
+        } else {
+            return back();
+        }
     }
 }

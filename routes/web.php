@@ -4,6 +4,7 @@ use App\Http\Controllers\anggaranController;
 use App\Http\Controllers\beritaController;
 use App\Http\Controllers\dokumenController;
 use App\Http\Controllers\fasilitasController;
+use App\Http\Controllers\layananController;
 use App\Http\Controllers\lembagaController;
 use App\Http\Controllers\potensiController;
 use App\Http\Controllers\publicController;
@@ -25,6 +26,14 @@ use App\Http\Controllers\adminController;
 
 Route::get('/', [publicController::class, 'homepage']);
 
+Route::get('/tugas', function () {
+    return view('view-tugas');
+});
+
+Route::get('/profil', function () {
+    return view('view-profil');
+});
+
 Route::get('/berita/search', [publicController::class, 'beritaPage']) -> name('searchBerita');
 
 Route::get('/berita/view/{id}', [publicController::class, 'viewBerita']);
@@ -44,6 +53,10 @@ Route::get('/lembaga/view/{id}', [publicController::class, 'viewLembaga']);
 Route::get('/anggaran', [publicController::class, 'anggaranPage']);
 
 Route::get('/dokumen', [publicController::class, 'dokumenPage']);
+
+Route::get('/layanan', [publicController::class, 'layananPage']);
+
+Route::get('/layanan/redirect/{id}', [publicController::class, 'layananRedirect']);
 
 Route::get('/admin', function () {
     return view('dashboard');
@@ -180,4 +193,24 @@ Route::post('/admin/fasilitas/edit/auth', [fasilitasController::class, 'editFasi
 ) -> middleware(AuthCheck::class) -> name ('FasilitasUpdate');
 
 Route::get('/admin/fasilitas/delete/{id}', [fasilitasController::class, 'deleteFasilitas']
+) -> middleware(AuthCheck::class);
+
+//Layanan
+Route::get('/admin/layanan', [layananController::class, 'pagedManageLayanan']
+) -> middleware(AuthCheck::class) -> name('LayananManage');
+
+Route::get('/admin/layanan/insert', function () {
+    return view('dashboard', ['mode' => 'insert', 'tab' => 'layanan']);
+}) -> middleware(AuthCheck::class);
+
+Route::post('/admin/layanan/insert/auth', [layananController::class, 'insert']
+) -> middleware(AuthCheck::class) -> name('LayananInsert');
+
+Route::get('/admin/layanan/edit/{id}', [layananController::class, 'editPage']
+) -> middleware(AuthCheck::class);
+
+Route::post('/admin/layanan/edit/auth', [layananController::class, 'editLayanan']
+) -> middleware(AuthCheck::class) -> name ('LayananUpdate');
+
+Route::get('/admin/layanan/delete/{id}', [layananController::class, 'deleteLayanan']
 ) -> middleware(AuthCheck::class);

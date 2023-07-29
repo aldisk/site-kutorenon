@@ -10,6 +10,7 @@
         <a href="/admin/anggaran">anggaran</a>
         <a href="/admin/lembaga">lembaga</a>
         <a href="/admin/fasilitas">fasilitas</a>
+        <a href="/admin/layanan">layanan</a>
         @if(isset($mode) && isset ($tab))
             @if($tab == 'berita')
                 @if($mode == 'insert')
@@ -58,6 +59,14 @@
                     @include('manage-fasilitas')
                 @elseif($mode == 'edit')
                     @include('edit-fasilitas')
+                @endif
+            @elseif($tab =='layanan')
+                @if($mode == 'insert')
+                    @include('insert-layanan')
+                @elseif($mode == 'manage')
+                    @include('manage-layanan')
+                @elseif($mode == 'edit')
+                    @include('edit-layanan')
                 @endif
             @endif
         @endif
