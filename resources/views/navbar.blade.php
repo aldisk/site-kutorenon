@@ -18,7 +18,7 @@
           <a class="dropdown-item" href="/profil">Profil Desa</a>
           <a class="dropdown-item" href="/lembaga">Lembaga</a>
           <a class="dropdown-item" href="/tugas">Tugas</a>
-          <a class="dropdown-item" href="#">Pejabat Desa</a>
+          <a class="dropdown-item" href="/pejabat">Pejabat Desa</a>
           <a class="dropdown-item" href="/anggaran">Anggaran</a>
         </div>
       </li>

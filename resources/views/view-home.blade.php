@@ -13,6 +13,7 @@
         <div class="text-center bg-image" style="
         background-image: url('{!! asset('/storage/bg.jpg') !!}');
         background-size: cover;
+        background-position: center;
         height: 60vh;">
         <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
             <div class="d-flex justify-content-center align-items-center h-100">

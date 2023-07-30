@@ -34,6 +34,10 @@ Route::get('/profil', function () {
     return view('view-profil');
 });
 
+Route::get('/pejabat', function () {
+    return view('view-pejabat');
+});
+
 Route::get('/berita/search', [publicController::class, 'beritaPage']) -> name('searchBerita');
 
 Route::get('/berita/view/{id}', [publicController::class, 'viewBerita']);
