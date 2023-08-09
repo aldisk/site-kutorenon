@@ -14,6 +14,10 @@ class fasilitas extends Model
         return DB::table('fasilitas')->where('id', $id)->first(); 
     }
 
+    public function getCount() {
+        return DB::table('fasilitas') -> count();
+    }
+
     public function getFasilitasBySlug($slug) {
         return DB::table('fasilitas')->where('slug', $slug)->first();
     }

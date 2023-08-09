@@ -14,7 +14,7 @@
             <div class="col">
                 <div class="card h-100">
                 <div>
-                    <img src="{!! asset('/storage/foto-potensi/'.$item->id.'.jpg') !!}" style="height: 12rem; object-fit: cover" class="card-img-top d-block mx-auto" alt="{!! $item->nama !!}">
+                    <img src="{!! asset('/storage/foto-'.strtolower($tabs).'/'.$item->id.'.jpg') !!}" style="height: 12rem; object-fit: cover" class="card-img-top d-block mx-auto" alt="{!! $item->nama !!}">
                 </div>
                 <div class="card-footer text-center">
                     <a href="/{!! strtolower($tabs) !!}/view/{!! $item->slug !!}" class="text-wrap text-center text-dark text-decoration-none">

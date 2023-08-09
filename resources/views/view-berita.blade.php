@@ -1,7 +1,7 @@
 <html>
     <head>
         @include('plugin/bootstrap-open')
-        <title>{{ $item->judul }} | Website Resmi Kutorenon</title>
+        <title>Berita | Website Resmi Kutorenon</title>
     </head>
     <body>
         @include('navbar')

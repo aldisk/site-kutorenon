@@ -19,6 +19,10 @@ class layanan extends Model
         return DB::table('layanans')->get();
     }
 
+    public function getCount() {
+        return DB::table('layanans') -> count();
+    }
+
     public function getLayananByID($id) {
         return DB::table('layanans')->where('id', $id)->first();
     }

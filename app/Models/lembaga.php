@@ -38,6 +38,10 @@ class lembaga extends Model
         return DB::table('lembagas')->get();
     }
 
+    public function getCount() {
+        return DB::table('lembagas') -> count();
+    }
+
     public function insertLembaga($nama, $id, $isi) {
         return DB::table('lembagas')->insertGetId([
             'nama' => $nama,

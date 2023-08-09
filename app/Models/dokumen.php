@@ -22,6 +22,10 @@ class dokumen extends Model
         return DB::table('dokumens')->get();
     }
 
+    public function getCount() {
+        return DB::table('dokumens') -> count();
+    }
+
     public function getDokumenByID($id) {
         return DB::table('dokumens')->where('id', $id)->first();
     }

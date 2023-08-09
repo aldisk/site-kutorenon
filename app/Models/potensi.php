@@ -18,6 +18,10 @@ class potensi extends Model
         return DB::table('potensis')->where('slug', $slug)->first();
     }
 
+    public function getCount() {
+        return DB::table('potensis') -> count();
+    }
+
     public function getPagedPotensis($searchToken, $page){
         $epp = 6;
 

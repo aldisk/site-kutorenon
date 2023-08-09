@@ -62,9 +62,8 @@ Route::get('/layanan', [publicController::class, 'layananPage']);
 
 Route::get('/layanan/redirect/{id}', [publicController::class, 'layananRedirect']);
 
-Route::get('/admin', function () {
-    return view('dashboard');
-}) -> middleware(AuthCheck::class);
+Route::get('/admin/', [adminController::class, 'dashboardPage']
+) -> middleware(AuthCheck::class);
 
 
 // Account

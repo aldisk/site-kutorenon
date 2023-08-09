@@ -18,6 +18,10 @@ class anggaran extends Model
         ]);
     }
 
+    public function getCount() {
+        return DB::table('anggarans') -> count();
+    }
+
     public function getAll() {
         return DB::table('anggarans')->get();
     }

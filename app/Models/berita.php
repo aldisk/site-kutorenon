@@ -28,6 +28,10 @@ class berita extends Model
         return ["searchResult" => $searcQuery, "maxPage" => $maxPage];
     }
 
+    public function getCount() {
+        return DB::table('beritas') -> count();
+    }
+
     public function getBeritasByPenulis($penulis) {
         return DB::table('beritas')->where('penulis', $penulis)->get(); 
     }
